@@ -39,4 +39,4 @@ gen_manifest.sh $FILES_LIST [ $CONFIG_JSON_FILE ]
 The `FILES_LIST` file contains file names, one per line.
 
 `CONFIG_JSON_FILE` is optional. If present, the parameters set there
-will override the defaulßt ones defined in config.json in the script directory.
+will override the default ones defined in config.json in the script directory.
