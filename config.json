@@ -1,0 +1,18 @@
+{
+  "_comment": "Default config parameters",
+  
+  "imageServerRootUrl": "http://images.iiif.yale.edu/iiif",
+  "manifestServerRootUrl": "http://manifests.ydc2.yale.edu",
+  
+  "projectPath": "Project/SubProject",
+  "manifestLabel": "Manifest",
+  
+  "_comment_chapter_prefix": "String to match from filename",
+  "chapterPrefix": "Chapter", 
+  
+  "_comment_page_prefix": "String to match from filename",
+  "pagePrefix": "Page",
+  
+  "chapterLabel": "Chapter",
+  "pageLabel": "Page"
+}
