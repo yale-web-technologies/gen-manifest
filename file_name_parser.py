@@ -11,7 +11,8 @@ class FileNameParser(object):
         self.pageLabel = config['pageLabel']
 
     def parse(self, file_name):
-        pattern = r'^(.*%s_(\d\d?)_%s_(\d\d))\.jpf$' % (self.chapterPrefix, self.pagePrefix)
+        #pattern = r'^(.*%s_(\d\d?)_%s_(\d\d))\.jpf$' % (self.chapterPrefix, self.pagePrefix)
+        pattern = r'^(.*%s\.(\d\d?)\.(\d\d))\.tif$' % self.projectPath
         m = re.match(pattern, file_name)
         if m == None:
             print 'ERROR file name does not match: %s' % file_name
@@ -21,7 +22,8 @@ class FileNameParser(object):
         chapter = m.group(2)
         page = m.group(3)
         
-        ident = '%s/%s' % (self.projectPath, book_id)
+        #ident = '%s/%s' % (self.projectPath, book_id)
+        ident = '%s-%s-%s-tif' % (self.projectPath, chapter, page)
         
         canvas_id = '%s/canvas/%s' % (self.manifestServerRootUrl, ident)
         canvas_label = '%s %s, %s %s' % (self.chapterLabel, chapter, self.pageLabel, page)
