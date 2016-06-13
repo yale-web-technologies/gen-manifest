@@ -64,7 +64,11 @@ class App(object):
             }
             ],
             'structures': []
-        }
+        };
+
+        if config['metadata']:
+            m['metadata'] = config['metadata']
+
         old_chapter = -1
         for file_name in files:
             file_info = self.fileNameParser.parse(file_name)
