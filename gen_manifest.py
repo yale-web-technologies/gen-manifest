@@ -66,23 +66,25 @@ class App(object):
             'structures': []
         };
 
-        if config['metadata']:
+        if config.get('metadata'):
             m['metadata'] = config['metadata']
 
         old_chapter = -1
+
         for file_name in files:
             file_info = self.fileNameParser.parse(file_name)
             if not file_info:
                 continue
             canvas = self.build_canvas(file_info)
             m['sequences'][0]['canvases'].append(canvas)
-            
-            chapter = file_info['chapter']
-            if chapter != old_chapter:
-                current_range = self.create_range(chapter)
-                m['structures'].append(current_range)
-                old_chapter = chapter
-            current_range['canvases'].append(file_info['canvas_id'])
+
+            if config.get('createChapters') == 'y':
+                chapter = file_info['chapter_padded']
+                if chapter != old_chapter:
+                    current_range = self.create_range(file_info)
+                    m['structures'].append(current_range)
+                    old_chapter = chapter
+                current_range['canvases'].append(file_info['canvas_id'])
             
         return m
 
@@ -117,10 +119,10 @@ class App(object):
         }
         return c
         
-    def create_range(self, chapter):
+    def create_range(self, file_info):
         config = self.config
-        range_id = '%s/range/%s/ch%s' % (config['manifestServerRootUrl'], config['projectPath'], chapter)
-        label = '%s %s' % (config['chapterLabel'], chapter)
+        range_id = '%s/range/%s/ch%s' % (config['manifestServerRootUrl'], config['projectPath'], file_info['chapter_padded'])
+        label = '%s %s' % (config['chapterLabel'], file_info['chapter_unpadded'])
         return {
           '@id': range_id,
           '@type': 'sc:Range',
