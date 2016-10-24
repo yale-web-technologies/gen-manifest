@@ -6,13 +6,15 @@
   
   "projectPath": "Project/SubProject",
   "manifestLabel": "Manifest",
+
+  "createChapters": "y",
   
-  "_comment_chapter_prefix": "String to match from filename",
-  "chapterPrefix": "Chapter", 
-  
-  "_comment_page_prefix": "String to match from filename",
-  "pagePrefix": "Page",
+  "chapterNumDigits": 3,
+  "pageNumDigits": 2,
+  "imageExtension": "jp2",
   
   "chapterLabel": "Chapter",
-  "pageLabel": "Page"
+  "pageLabel": "Page",
+
+  "metadata": null
 }
